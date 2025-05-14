@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:local_auth/local_auth.dart';
 
 class AuthService {
@@ -22,7 +23,9 @@ class AuthService {
         ),
       );
     } catch (e) {
-      print("Error using biometric authentication: $e");
+      if (kDebugMode) {
+        print("Error using biometric authentication: $e");
+      }
       return false;
     }
   }
