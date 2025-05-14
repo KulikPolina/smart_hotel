@@ -23,14 +23,12 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
   DateTime? endDate;
 
   Future<void> _selectDate({required bool isStart}) async {
-    final DateTime initial =
-        isStart ? (startDate ?? DateTime.now()) : (endDate ?? DateTime.now());
-    final DateTime first =
-        isStart ? DateTime.now() : (startDate ?? DateTime.now());
+    final now = DateTime.now();
+
     final picked = await showDatePicker(
       context: context,
-      initialDate: initial,
-      firstDate: first,
+      initialDate: isStart ? (startDate ?? now) : (endDate ?? startDate ?? now),
+      firstDate: isStart ? now : (startDate ?? now),
       lastDate: DateTime(2100),
     );
 
@@ -118,11 +116,32 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
 
                           context.read<BookedRoomsCubit>().addRoom(newBooking);
 
-                          Navigator.pop(
-                            context,
+                          showDialog(
+                            context: context,
+                            builder:
+                                (context) => AlertDialog(
+                                  title: const Text('Success'),
+                                  content: const Text(
+                                    'Room has been booked successfully.',
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(
+                                          context,
+                                        ).pop();
+                                        Navigator.of(
+                                          context,
+                                        ).pop();
+                                      },
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                ),
                           );
                         }
                         : null,
+
                 child: const Text('Book'),
               ),
             ),

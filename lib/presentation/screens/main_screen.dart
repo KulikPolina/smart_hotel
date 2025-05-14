@@ -16,31 +16,33 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: IndexedStack(
-        index: currentPage, 
-        children: pages
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 35,
-        selectedFontSize: 0,
-        unselectedFontSize: 0,
-        onTap: (value) {
-          setState(() {
-            currentPage = value;
-          });
-        },
-        currentIndex: currentPage,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.location_on_outlined),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.house_outlined),
-            label: '',
-          ),
-        ],
+    return SafeArea(
+      child: Scaffold(
+        body: IndexedStack(
+          index: currentPage, 
+          children: pages
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          iconSize: 35,
+          selectedFontSize: 0,
+          unselectedFontSize: 0,
+          onTap: (value) {
+            setState(() {
+              currentPage = value;
+            });
+          },
+          currentIndex: currentPage,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.location_on_outlined),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.house_outlined),
+              label: '',
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:smart_hotel/domain/models/booked_room_model.dart';
 import 'package:smart_hotel/presentation/bloc/rooms_cubit.dart';
+import 'package:smart_hotel/presentation/screens/booked_room_details.dart';
 
 class BookedRoomsScreen extends StatelessWidget {
   const BookedRoomsScreen({super.key});
@@ -33,6 +34,14 @@ class BookedRoomsScreen extends StatelessWidget {
                 ),
                 title: Text(room.title),
                 subtitle: Text(dateRange),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BookedRoomDetails(room: room),
+                    ),
+                  );
+                },
               );
             },
           );
