@@ -13,15 +13,15 @@ class BookedRoomDetails extends StatefulWidget {
 class _BookedRoomDetailsState extends State<BookedRoomDetails> {
   bool isDaylightOn = false;
   bool isNightlightOn = false;
-  final AuthService _authService = AuthService();
-  String authStatus = "Not Authenticated";
+  // final AuthService _authService = AuthService();
+  // String authStatus = "Not Authenticated";
 
-  Future<void> _authenticate() async {
-    bool authenticated = await _authService.authenticate();
-    setState(() {
-      authStatus = authenticated ? "Authenticated" : "Failed to Authenticate";
-    });
-  }
+  // Future<void> _authenticate() async {
+  //   bool authenticated = await _authService.authenticate();
+  //   setState(() {
+  //     authStatus = authenticated ? "Authenticated" : "Failed to Authenticate";
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class _BookedRoomDetailsState extends State<BookedRoomDetails> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: _authenticate,
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 16),
                   backgroundColor: Colors.deepPurple,
