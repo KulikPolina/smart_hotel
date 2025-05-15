@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:smart_hotel/domain/models/booked_room_model.dart';
-import 'package:smart_hotel/presentation/bloc/rooms_cubit.dart';
+import 'package:smart_hotel/presentation/bloc/room_cubit/rooms_cubit.dart';
 import 'package:smart_hotel/presentation/screens/booked_room_details.dart';
 
 class BookedRoomsScreen extends StatelessWidget {

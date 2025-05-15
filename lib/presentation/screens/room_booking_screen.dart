@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:smart_hotel/domain/models/booked_room_model.dart';
-import 'package:smart_hotel/presentation/bloc/rooms_cubit.dart';
+import 'package:smart_hotel/presentation/bloc/ble_bloc/room_control_bloc.dart';
+import 'package:smart_hotel/presentation/bloc/room_cubit/rooms_cubit.dart';
 
 class RoomBookingScreen extends StatefulWidget {
   final String title;
@@ -116,6 +117,12 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
 
                           context.read<BookedRoomsCubit>().addRoom(newBooking);
 
+                          context.read<RoomControlBloc>().add(
+                            ConnectToRoom(
+                              "01:23:45:67:89:AB",
+                            ), // <- настоящий MAC-адрес микроконтроллера
+                          );
+
                           showDialog(
                             context: context,
                             builder:
@@ -127,12 +134,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                   actions: [
                                     TextButton(
                                       onPressed: () {
-                                        Navigator.of(
-                                          context,
-                                        ).pop();
-                                        Navigator.of(
-                                          context,
-                                        ).pop();
+                                        Navigator.of(context).pop();
+                                        Navigator.of(context).pop();
                                       },
                                       child: const Text('OK'),
                                     ),
